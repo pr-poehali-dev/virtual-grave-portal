@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import VirtualTour from '@/components/VirtualTour';
 
 const PORTRAIT =
   'https://cdn.poehali.dev/projects/b9873eb4-ed53-4c0f-9fb0-64f71b826c8a/files/e0ae8a9f-7413-42e7-b11e-68417b294d3e.jpg';
@@ -43,6 +44,7 @@ const Memorial = () => {
   const [memories, setMemories] = useState(initialMemories);
   const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
+  const [tourOpen, setTourOpen] = useState(false);
 
   const lightCandle = () => {
     if (lit) return;
@@ -67,6 +69,7 @@ const Memorial = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {tourOpen && <VirtualTour onClose={() => setTourOpen(false)} />}
       {/* Header */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/60">
         <div className="container flex items-center justify-between h-16">
@@ -102,7 +105,7 @@ const Memorial = () => {
                 <Icon name="Flame" size={18} className="mr-2" />
                 Зажечь свечу
               </Button>
-              <Button variant="outline" className="rounded-full border-foreground/20">
+              <Button variant="outline" className="rounded-full border-foreground/20" onClick={() => setTourOpen(true)}>
                 <Icon name="Box" size={18} className="mr-2" />
                 Виртуальный 3D-тур
               </Button>
