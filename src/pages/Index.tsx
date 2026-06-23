@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -185,9 +186,11 @@ const Index = () => {
                   <Icon name="MapPin" size={15} className="mt-0.5 shrink-0 text-accent" />
                   {m.place}
                 </p>
-                <Button variant="ghost" className="w-full justify-between rounded-full text-foreground hover:bg-secondary">
-                  Открыть страницу
-                  <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform" />
+                <Button asChild variant="ghost" className="w-full justify-between rounded-full text-foreground hover:bg-secondary">
+                  <Link to="/memorial">
+                    Открыть страницу
+                    <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </div>
             ))}
